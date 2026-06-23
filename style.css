@@ -471,6 +471,31 @@ body {
     background: linear-gradient(135deg, transparent 50%, rgba(212, 175, 55, 0.05) 50%);
 }
 
+/* 8b. ギャラリーグリッド */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.gallery-item {
+    overflow: hidden;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.03);
+}
+
 /* 9. フッター */
 .site-footer {
     padding: 4rem 2rem;
