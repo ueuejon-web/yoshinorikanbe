@@ -378,6 +378,37 @@ body {
     line-height: 2;
 }
 
+.bio-profile-pair {
+    --bio-photo-main-width: 260px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 1rem;
+    margin: 0 auto 2rem;
+}
+
+.bio-profile-photo {
+    overflow: hidden;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.35);
+}
+
+.bio-profile-photo-main {
+    width: var(--bio-photo-main-width);
+}
+
+.bio-profile-photo-sub {
+    width: calc(var(--bio-photo-main-width) * 0.75);
+}
+
+.bio-profile-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
 .bio-intro .birth-info {
     margin-bottom: 1rem;
 }
@@ -474,7 +505,7 @@ body {
 /* 8b. ギャラリーグリッド */
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 2rem;
 }
 
@@ -537,6 +568,25 @@ body {
     }
 }
 
+/* PC表示の圧迫感を抑えるため、全体を約80%スケールに調整 */
+@media (min-width: 1200px) {
+    html {
+        font-size: 80%;
+    }
+
+    .section-inner {
+        max-width: 960px;
+    }
+
+    .bio-layout {
+        max-width: 720px;
+    }
+
+    .bio-profile-pair {
+        --bio-photo-main-width: 208px;
+    }
+}
+
 /* 11. レスポンシブ対応 */
 @media (max-width: 1024px) {
     .about-layout {
@@ -579,5 +629,14 @@ body {
 
     .coming-soon-box {
         padding: 4rem 2rem;
+    }
+
+    .bio-profile-pair {
+        --bio-photo-main-width: 180px;
+        gap: 0.75rem;
+    }
+
+    .gallery-grid {
+        gap: 1rem;
     }
 }

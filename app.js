@@ -17,13 +17,31 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }, {
-        threshold: 0.15, // 要素の15%が見えたらフェードイン開始
-        rootMargin: '0px 0px -50px 0px' // 少し早めにアニメーションを開始させるためのマージン
+        threshold: 0.01, // 長いセクションでも初回表示で発火しやすくする
+        rootMargin: '0px 0px -10% 0px'
     });
 
     fadeElements.forEach(el => {
         fadeOnScrollObserver.observe(el);
     });
+
+    // 初回ロード時に可視範囲へ入っている要素を確実に表示する
+    const activateVisibleFadeElements = () => {
+        fadeElements.forEach(el => {
+            if (el.classList.contains('active')) return;
+
+            const rect = el.getBoundingClientRect();
+            const isVisible = rect.top < window.innerHeight * 0.98 && rect.bottom > 0;
+            if (isVisible) {
+                el.classList.add('active');
+                fadeOnScrollObserver.unobserve(el);
+            }
+        });
+    };
+
+    activateVisibleFadeElements();
+    window.addEventListener('load', activateVisibleFadeElements);
+    window.addEventListener('resize', activateVisibleFadeElements);
 
     // 2. ヘッダーのスクロールエフェクト（少しスクロールしたら背景を濃くする）
     const header = document.querySelector('.site-header');
