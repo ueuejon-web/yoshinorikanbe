@@ -54,4 +54,49 @@ document.addEventListener('DOMContentLoaded', () => {
             header.style.backgroundColor = 'transparent';
         }
     });
+
+    // 3. ギャラリーモーダル機能
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const modal = document.getElementById('gallery-modal');
+    const modalImage = document.getElementById('modal-image');
+    const modalTitle = document.getElementById('modal-title');
+    const modalDetail = document.getElementById('modal-detail');
+    const modalClose = document.querySelector('.modal-close');
+    const modalOverlay = document.querySelector('.modal-overlay');
+
+    // モーダルを開く関数
+    const openModal = (img, title, detail) => {
+        modalImage.src = img;
+        modalTitle.textContent = title;
+        modalDetail.textContent = detail;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // スクロール禁止
+    };
+
+    // モーダルを閉じる関数
+    const closeModal = () => {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto'; // スクロール解除
+    };
+
+    // ギャラリーアイテムのクリックイベント
+    galleryItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const img = item.querySelector('img').src;
+            const title = item.dataset.title;
+            const detail = item.dataset.detail;
+            openModal(img, title, detail);
+        });
+    });
+
+    // モーダルを閉じるイベント
+    modalClose.addEventListener('click', closeModal);
+    modalOverlay.addEventListener('click', closeModal);
+
+    // ESCキーでモーダルを閉じる
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
 });
