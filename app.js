@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const openModal = (img, title, detail) => {
         modalImage.src = img;
         modalTitle.textContent = title;
-        modalDetail.textContent = detail;
+        modalDetail.innerHTML = detail;
         modal.classList.add('active');
         document.body.style.overflow = 'hidden'; // スクロール禁止
     };
