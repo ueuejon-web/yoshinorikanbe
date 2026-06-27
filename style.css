@@ -420,7 +420,7 @@ body {
 
 .bio-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 2.5rem;
 }
 
@@ -466,6 +466,29 @@ body {
     position: absolute;
     left: 0;
     color: var(--accent);
+}
+
+.award-list li,
+.exhibition-list li {
+    display: grid;
+    grid-template-columns: 5.6em minmax(0, 1fr) 8.8em;
+    column-gap: 0.8rem;
+    align-items: start;
+}
+
+.award-list .col-year,
+.exhibition-list .col-year {
+    white-space: nowrap;
+}
+
+.award-list .col-show,
+.exhibition-list .col-show {
+    min-width: 0;
+}
+
+.award-list .col-note,
+.exhibition-list .col-note {
+    white-space: nowrap;
 }
 
 /* 8. 代表作品 & お問い合わせ (Coming Soon) */
@@ -805,5 +828,11 @@ body {
 
     .gallery-grid {
         gap: 1rem;
+    }
+
+    .award-list li,
+    .exhibition-list li {
+        grid-template-columns: 5.2em minmax(0, 1fr) 8em;
+        column-gap: 0.6rem;
     }
 }
