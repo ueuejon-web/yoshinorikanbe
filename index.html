@@ -303,6 +303,13 @@
     </footer>
 
     <!-- JavaScript -->
+    <script>
+        window.va = window.va || function () {
+            (window.vaq = window.vaq || []).push(arguments);
+        };
+    </script>
+    <!-- Replace <unique-path> with the path generated for this Vercel project. -->
+    <script defer src="/<unique-path>/script.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
